@@ -33,9 +33,9 @@ public class UserEntity implements UserDetails {
     @Column(name = "password", length = Integer.MAX_VALUE)
     private String password;
 
+    @Builder.Default
     @Column(name = "role", length = 20)
     @Enumerated(EnumType.STRING)
-    @Builder.Default
     private RoleEnum role = RoleEnum.USER;
 
     @Override

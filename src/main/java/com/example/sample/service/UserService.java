@@ -1,6 +1,7 @@
 package com.example.sample.service;
 
 import com.example.sample.entity.UserEntity;
+import com.example.sample.exception.authentication.AlreadyRegisteredException;
 import com.example.sample.model.authentication.AuthenticationRequest;
 import com.example.sample.model.authentication.AuthenticationResponse;
 import com.example.sample.model.authentication.RegisterRequest;
@@ -26,9 +27,11 @@ public class UserService {
 
     public AuthenticationResponse register(RegisterRequest registerRequest) {
 
-        if (userRepository.findByUsernameOrEmail(registerRequest.username(), registerRequest.email()) != null) {
-            throw new RuntimeException();
-        }
+        if (userRepository.findByEmail(registerRequest.email()).isPresent())
+            throw new AlreadyRegisteredException("Email is already in use");
+
+        if (userRepository.findByUsername(registerRequest.username()).isPresent())
+            throw new AlreadyRegisteredException("User with same username is already registered");
 
         var user = UserEntity.builder()
                 .email(registerRequest.email())

@@ -6,7 +6,4 @@ public class AlreadyRegisteredException extends RuntimeException{
         super(message);
     }
 
-    public AlreadyRegisteredException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

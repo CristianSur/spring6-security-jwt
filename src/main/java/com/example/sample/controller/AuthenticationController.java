@@ -3,7 +3,6 @@ package com.example.sample.controller;
 import com.example.sample.model.authentication.AuthenticationRequest;
 import com.example.sample.model.authentication.AuthenticationResponse;
 import com.example.sample.model.authentication.RegisterRequest;
-import com.example.sample.repository.UserRepository;
 import com.example.sample.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;

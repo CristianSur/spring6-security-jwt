@@ -57,6 +57,6 @@ public class UserService {
 
         var user = userRepository.findByUsername(authenticationRequest.username());
 
-        return new AuthenticationResponse(jwtService.generateToken(user.get()));
+        return new AuthenticationResponse(jwtService.generateToken(user.orElseThrow()));
     }
 }

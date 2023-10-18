@@ -2,7 +2,6 @@ package com.example.sample.security;
 
 import com.example.sample.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,9 +27,8 @@ public class ApplicationSecurityConfig {
         return username -> userRepository.findByUsername(username).orElseThrow();
     }
 
-    @SneakyThrows
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
     }
 
